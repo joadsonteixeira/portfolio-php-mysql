@@ -1,0 +1,178 @@
+*{
+    margin: 0px;
+}
+
+#container{
+    margin: 0 15%;
+    overflow: hidden;
+}
+
+#navbar{
+    width: 100%;
+    height: 8vh;
+    background-color: rgb(32,113,183);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15%;
+
+}
+
+#logo{
+    padding-left: 50px;
+}
+
+#logo a{
+    text-decoration: none;
+}
+
+#logo a h1{
+    color: white;
+}
+
+#menu{
+    padding-right: 50px;
+    height: 100%;
+}
+
+#menu ul{
+    padding: 0px;
+    display: flex;
+    list-style: none;
+    height: 100%;
+}
+
+#menu ul a{
+    height: 100%;
+    text-decoration: none;
+    font-weight: 300;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+}
+
+#menu ul a:hover{
+    background-color: white;
+}
+
+
+
+
+#cover {
+    width: 100%;
+    height: 20rem;
+    display: flex;
+}
+
+#personal{
+    height: 100%;
+    width: 100%;
+    padding-left: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#image-container{
+    width: 15rem;
+    height: flex;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+
+    
+    border: 5px;
+    border-style: solid;
+    border-color: #fff;
+
+    
+    overflow: hidden;
+}
+
+#image-container img{
+    width: 100%;
+}
+
+#intro{
+    padding: 0 36px;
+}
+
+#intro h1 {
+    font-size: 2rem;
+}
+
+#intro p{
+    font-size: 1rem;
+}
+
+#details{
+    height: 100%;
+}
+
+.container{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: none;
+}
+
+.card{
+    border: none !important;
+}
+
+.project{
+    margin-bottom: 16px;
+}
+
+.card-icon{
+    margin-top: 10%;
+    width: 20%;
+    height: flex;
+}
+
+#grid{
+    padding: 0;
+}
+
+.portfolio{
+    width: 100%;
+}
+#portfolio{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.card-image{
+    width: 100%;
+    height: flex;
+    border: 1px solid;
+}
+
+.port-title{
+    margin: 0;
+    padding: 0;
+
+}
+
+.port-text{
+    margin: 0;
+    padding: 0;
+    
+}
+
+#contato{
+    height: 20rem;
+    width: 100%;
+    background-color: rgb(32,113,183);
+    overflow: hidden;
+}
+
+#footer-container{
+    margin: 0 15%;
+}
+
+.footer-title{
+    color: white;
+}

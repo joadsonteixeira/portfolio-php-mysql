@@ -11,47 +11,16 @@
                 </div>';
     }
 
-    $name = "Joadson Teixeira";
+    $sql_person = "select * from pessoa where idpessoa = 1";
+    $result = mysqli_query($connection, $sql_person);
+    $person = mysqli_fetch_assoc($result);
 
-    $values = [['icon-ref'=>'img/website.png',
-                'title'=>'Lorem ipsum dolor',
-                'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id, semper nec mauris. Fusce in fermentum nisi.'],
-                ['icon-ref'=>'img/hourglass.png',
-                'title'=>'Lorem ipsum dolor',
-                'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id, semper nec mauris. Fusce in fermentum nisi.'],
-                ['icon-ref'=>'img/cell-phone.png',
-                'title'=>'Lorem ipsum dolor',
-                'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id, semper nec mauris. Fusce in fermentum nisi.'],
-                
-            ];
+    $sql_values = "select * from valor";
+    $values = mysqli_query($connection, $sql_values);
 
-    $projects= [
-        ['icon-ref'=>'img/projects/portfolio.jpg',
-        'title'=>'Lorem ipsum dolor',
-        'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id.'],
-        ['icon-ref'=>'img/projects/portfolio.jpg',
-        'title'=>'Lorem ipsum dolor',
-        'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id.'],
-        ['icon-ref'=>'img/projects/portfolio.jpg',
-        'title'=>'Lorem ipsum dolor',
-        'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id.'],
-        ['icon-ref'=>'img/projects/portfolio.jpg',
-        'title'=>'Lorem ipsum dolor',
-        'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id.'],
-        ['icon-ref'=>'img/projects/portfolio.jpg',
-        'title'=>'Lorem ipsum dolor',
-        'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id.'],
-        ['icon-ref'=>'img/projects/portfolio.jpg',
-        'title'=>'Lorem ipsum dolor',
-        'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id.'],
-        ['icon-ref'=>'img/projects/portfolio.jpg',
-        'title'=>'Lorem ipsum dolor',
-        'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id.'],
-        ['icon-ref'=>'img/projects/portfolio.jpg',
-        'title'=>'Lorem ipsum dolor',
-        'description'=>'Sed a imperdiet lectus. Donec lorem quam, pellentesque vel tempus id.'],
-    ];
-
+    $sql_proj = "select * from projeto";
+    $projects = mysqli_query($connection, $sql_proj);
+    
     
 
 
@@ -101,10 +70,10 @@
             <section id="cover">
                 <div id="personal">
                     <div id="image-container">
-                        <img src="img/user_default.png" alt="Foto do perfil">
+                        <img src="<?php echo $person['avatar-ref'] ?>" alt="Foto do perfil">
                     </div>
                     <div id="intro">
-                        <h1>Olá, eu sou <?php echo $name ?> </h1>
+                        <h1>Olá, eu sou <?php echo $person['nome'] ?> </h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut consectetur massa, nec dapibus mauris. Integer dictum lorem vitae magna mattis faucibus.</p>
                     </div>
 
@@ -117,14 +86,15 @@
             <section id="valores">
                 <div id="cards" class="container-fluid row justify-content-md-center">
                     <?php 
-                        foreach ($values as $value){
-                            echo '<div class="card col-sm-4">
-                                <img class="mx-auto card-icon" src="' . $value['icon-ref'] . '" alt="competence">
+                        while ($value = mysqli_fetch_array($values)){ ?>
+                            <div class="card col-sm-4">
+                                <img class="mx-auto card-icon" src="<?php echo $value['icone-ref'] ?>" alt="competence">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center">'. $value['title'] .'</h5>
-                                    <p class="card-text text-center">'. $value['description'] .'</p>
+                                    <h5 class="card-title text-center"><?php echo $value['titulo'] ?></h5>
+                                    <p class="card-text text-center"><?php echo $value['descricao'] ?></p>
                                 </div>
-                            </div>';
+                            </div>
+                        <?php
                         };
                     ?>
                 </div>
@@ -138,8 +108,17 @@
                         <div id="grid" class="container row">
 
                         <?php 
-                            foreach($projects as $project){
-                                echo grid_item_component($project);
+                            while($project = mysqli_fetch_array($projects)){ ?>
+                                <div class="card project col-3">
+                                    <div class="card-image-container">
+                                        <img class="mx-auto card-image" src="<?php echo $project['imagem-ref'] ?>" alt="competence">
+                                    </div>
+                                    <div class="">
+                                        <h5 class="port-title"><?php echo $project['titulo'] ?></h5>
+                                        <p class="port-text"><?php echo $project['descricao'] ?></p>
+                                    </div>
+                                </div>
+                            <?php
                             }
                         ?>
                         </div>
@@ -154,10 +133,15 @@
             <footer id="footer-container" class="container row">
                 <div class="col-sm footer-title">
                     <h5>Contato</h5>
+                    <p>Celular: <?php echo $person['celular'] ?></p>
+                    <p>E-mail: <?php echo $person['email'] ?></p>
                 </div>
 
                 <div class="col-sm footer-title">
                     <h5>Redes Sociais</h5>
+                    <a class="text-light fw-bold" href="<?php echo $person['github'] ?>" target="_blank">GitHub</a>
+                    <br>
+                    <a class="text-light fw-bold" href="<?php echo $person['linkedin'] ?>" target="_blank">LinkedIn</a>
                 </div>
             </footer>
         </section>

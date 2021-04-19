@@ -94,6 +94,7 @@
 
 #image-container img{
     width: 100%;
+    height: flex;
 }
 
 #intro{
@@ -144,10 +145,21 @@
     margin-bottom: 30px;
 }
 
+.card-image-container{
+    width: 100%;
+    height: 12rem;
+    border: 1px solid;
+    display: flex;
+    align-items: start;
+
+
+    overflow: hidden;
+}
+
 .card-image{
     width: 100%;
     height: flex;
-    border: 1px solid;
+
 }
 
 .port-title{

@@ -8,6 +8,8 @@ $imagesdir = '/uploads/';
 $person = mysqli_real_escape_string($connection, trim($_POST['person-name']));
 $email = mysqli_real_escape_string($connection, trim($_POST['person-email']));
 $phone = mysqli_real_escape_string($connection, trim($_POST['person-phone']));
+$linkedin = mysqli_real_escape_string($connection, trim($_POST['person-linkedin']));
+$github = mysqli_real_escape_string($connection, trim($_POST['person-github']));
 $avatar = mysqli_real_escape_string($connection, trim($imagesdir . $_FILES['avatar-ref']['name']));
 
 $uploaddir = realpath(dirname(__FILE__)) .'/uploads/';
@@ -28,9 +30,9 @@ $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 
 if($row['total'] == 0) {
-	$sql = "INSERT INTO pessoa (idpessoa, nome, email, celular, `avatar-ref`) VALUES (1,'$person', '$email', '$phone', '$avatar')";
+	$sql = "INSERT INTO pessoa (idpessoa, nome, email, celular, `avatar-ref`) VALUES (1,'$person', '$email', '$phone', '$linkedin', $github, '$avatar')";
 }else{
-	$sql = "update pessoa set nome = '$person', email = '$email', celular = '$phone', `avatar-ref` = '$avatar' where idpessoa = 1";
+	$sql = "update pessoa set nome = '$person', email = '$email', celular = '$phone', linkedin = '$linkedin', github = '$github', `avatar-ref` = '$avatar' where idpessoa = 1";
 }
 
 mysqli_query($connection, $sql);
